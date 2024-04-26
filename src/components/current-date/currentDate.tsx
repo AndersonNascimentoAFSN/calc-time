@@ -51,7 +51,7 @@ export function CurrentDate() {
     hour12: false
   }).format(deadLineDate)
 
-  const currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds())
+  const currentDate = new Date()
   // currentDate.setHours(currentDate.getHours() - 3)
 
   const isGreater = currentDate > deadLineDate
