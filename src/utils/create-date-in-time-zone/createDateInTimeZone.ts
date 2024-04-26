@@ -8,15 +8,21 @@
 //   return new Date(utcDate + timeZoneOffset * 3600000);
 // }
 
-const deadlineDay = process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY 
-const deadlineHour = process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR 
+const deadlineDay = process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY
+const deadlineHour = process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR
 
 import { toZonedTime } from 'date-fns-tz';
 
 export function createDateInSaoPaulo(): Date {
+  console.log('process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY ', process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY)
+  console.log('process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR ', process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR)
+
+
   // Pegar a data e hora UTC atual
   const now = new Date();
-  const  nowUtc = new Date(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
+  const nowUtc = new Date(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
+
+  console.log(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]))
 
   // Definir o fuso horário de São Paulo
   const timeZone = 'America/Sao_Paulo';
