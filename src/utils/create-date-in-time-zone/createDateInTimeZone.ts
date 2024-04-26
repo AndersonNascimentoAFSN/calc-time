@@ -8,10 +8,10 @@
 //   return new Date(utcDate + timeZoneOffset * 3600000);
 // }
 
-const deadlineDay = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY
-const deadlineHour = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR
+const deadlineDay = process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY 
+const deadlineHour = process.env.MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR 
 
-import { format, toZonedTime } from 'date-fns-tz';
+import { toZonedTime } from 'date-fns-tz';
 
 export function createDateInSaoPaulo(): Date {
   // Pegar a data e hora UTC atual
