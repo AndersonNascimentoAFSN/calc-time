@@ -28,11 +28,13 @@ export function CurrentDate() {
       <div>
         <span>Horário Atual (Hospedagem):  <span>{currentDateFormat}</span></span>
 
-        <div>{currentDate.toISOString()}</div>
+        <div>{JSON.stringify(currentDate)}</div>
       </div>
 
       <div>
         <span>Horário Atual (Horário Brasilia):  <span>{dateInTimeZoneBrFormat}</span></span>
+
+        <div>{JSON.stringify(dateInTimeZoneBr)}</div>
       </div>
     </div>
   )
