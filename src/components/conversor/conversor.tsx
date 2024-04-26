@@ -29,7 +29,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 
-export function Conversor() {
+export function Conversor({deadLineDate}:{ deadLineDate: Date}) {
   const [time, setTime] = useState('00:00')
   const [decimal, setDecimal] = useState(0)
 
@@ -103,7 +103,7 @@ export function Conversor() {
         </TabsContent>
       </Tabs>
 
-      <CurrentDate />
+      <CurrentDate deadLineDate={deadLineDate}/>
     </div>
   )
 }

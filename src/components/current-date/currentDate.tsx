@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 import { createDateInTimeZone } from "@/utils/create-date-in-time-zone"
 
-export function CurrentDate() {
+export function CurrentDate({deadLineDate}:{ deadLineDate: Date}) {
   const now = new Date()
 
   const currentDateFormat = Intl.DateTimeFormat('pt-BR', {
@@ -39,7 +39,7 @@ export function CurrentDate() {
   const deadlineDay = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY
   const deadlineHour = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR
 
-  const deadLineDate = new Date(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
+  // const deadLineDate = new Date(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
 
   const deadLineDateFormat = Intl.DateTimeFormat('pt-BR', {
     year: 'numeric',
@@ -51,6 +51,7 @@ export function CurrentDate() {
     hour12: false
   }).format(deadLineDate)
 
+  // const currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds())
   const currentDate = new Date()
   // currentDate.setHours(currentDate.getHours() - 3)
 
