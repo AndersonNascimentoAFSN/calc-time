@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect } from "react"
+import { format } from 'date-fns-tz';
 
-export function CurrentDate({deadLineDate}:{ deadLineDate: Date}) {
+export function CurrentDate({ deadLineDate }: { deadLineDate: Date }) {
   const now = new Date()
 
   const currentDateFormat = Intl.DateTimeFormat('pt-BR', {
@@ -40,19 +41,23 @@ export function CurrentDate({deadLineDate}:{ deadLineDate: Date}) {
 
   // const deadLineDate = new Date(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
 
-  const deadLineDateFormat = Intl.DateTimeFormat('pt-BR', {
-    year: 'numeric',
-    month: 'long',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false
-  }).format(deadLineDate)
+  // const deadLineDateFormat = Intl.DateTimeFormat('pt-BR', {
+  //   year: 'numeric',
+  //   month: 'long',
+  //   day: '2-digit',
+  //   hour: '2-digit',
+  //   minute: '2-digit',
+  //   second: '2-digit',
+  //   hour12: false
+  // }).format(deadLineDate)
 
   // const currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds())
   const currentDate = new Date()
   // currentDate.setHours(currentDate.getHours() - 3)
+
+  const deadLineDateFormat = format(deadLineDate, 'yyyy-MM-dd HH:mm:ssXXX', {
+    timeZone: 'America/Sao_Paulo'
+  })
 
   const isGreater = currentDate > deadLineDate
 

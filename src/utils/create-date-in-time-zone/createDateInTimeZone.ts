@@ -22,8 +22,6 @@ export function createDateInSaoPaulo(): Date {
   const now = new Date();
   const nowUtc = new Date(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
 
-  console.log(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]))
-
   // Definir o fuso horário de São Paulo
   const timeZone = 'America/Sao_Paulo';
 
