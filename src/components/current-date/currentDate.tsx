@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect } from "react"
-import { createDateInTimeZone } from "@/utils/create-date-in-time-zone"
 
 export function CurrentDate({deadLineDate}:{ deadLineDate: Date}) {
   const now = new Date()
