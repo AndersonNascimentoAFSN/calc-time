@@ -1,6 +1,10 @@
 'use client'
 
 import { useEffect } from "react"
+import { formatISO } from 'date-fns';
+import moment from 'moment';
+
+import { toZonedTime } from 'date-fns-tz';
 
 export function CurrentDate({deadLineDate}:{ deadLineDate: Date}) {
   const now = new Date()
@@ -38,7 +42,15 @@ export function CurrentDate({deadLineDate}:{ deadLineDate: Date}) {
   const deadlineDay = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY
   const deadlineHour = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR
 
-  // const deadLineDate = new Date(now.getFullYear(), now.getMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
+  const currentDate = new Date()
+
+  const isGreater = currentDate > deadLineDate
+
+  const hours = Number(deadlineHour?.split(':')[0])
+  const minutes = Number(deadlineHour?.split(':')[1])
+
+  deadLineDate.setHours(hours)
+  deadLineDate.setMinutes(minutes)
 
   const deadLineDateFormat = Intl.DateTimeFormat('pt-BR', {
     year: 'numeric',
@@ -49,16 +61,6 @@ export function CurrentDate({deadLineDate}:{ deadLineDate: Date}) {
     second: '2-digit',
     hour12: false
   }).format(deadLineDate)
-
-  // const currentDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds())
-  const currentDate = new Date()
-  // currentDate.setHours(currentDate.getHours() - 3)
-
-  const isGreater = currentDate > deadLineDate
-
-  console.log('deadLineDate', deadLineDate)
-  console.log('currentDate', currentDate)
-  console.log('currentDate > deadLineDate', isGreater)
 
   return (
     <div>
