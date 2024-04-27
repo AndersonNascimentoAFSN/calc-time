@@ -19,8 +19,10 @@ export function createDateInSaoPaulo(): Date {
 
 
   // Pegar a data e hora UTC atual
-  const now = new Date();
-  const nowUtc = new Date(now.getUTCFullYear(), now.getUTCMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
+  // const now = new Date();
+  // const nowUtc = new Date(now.getUTCFullYear(), now.getUTCMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1]), 0)
+
+  const dateUtc = new Date(Date.UTC(new Date().getUTCFullYear(), new Date().getUTCMonth(), Number(deadlineDay), Number(deadlineHour?.split(':')[0]), Number(deadlineHour?.split(':')[1])), 0);
 
   // // Definir o fuso horário de São Paulo
   // const timeZone = 'America/Sao_Paulo';
@@ -30,7 +32,7 @@ export function createDateInSaoPaulo(): Date {
 
   // return saoPauloDate
 
-  return nowUtc
+  return dateUtc
 }
 
 
