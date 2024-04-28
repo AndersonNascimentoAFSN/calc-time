@@ -30,6 +30,11 @@ import {
 } from "@/components/ui/tabs"
 import { createDateInSaoPaulo } from '@/utils'
 
+const CurrentDateNew = dynamic(() => import('../current-date-new').then(
+  (mod) => mod.CurrentDateNew),
+  { ssr: false, loading: () => <p>Loading...</p> }
+)
+
 export function Conversor() {
   const [time, setTime] = useState('00:00')
   const [decimal, setDecimal] = useState(0)
@@ -104,7 +109,7 @@ export function Conversor() {
         </TabsContent>
       </Tabs>
 
-      <CurrentDate />
+      <CurrentDateNew />
     </div>
   )
 }

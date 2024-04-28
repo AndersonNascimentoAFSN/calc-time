@@ -47,7 +47,7 @@ export function CurrentDate() {
 
   const currentDate = new Date()
 
-  const isGreater = currentDate > deadLineDate
+  const isGreater = currentDate > deadLineDate.toDate()
 
   const deadLineDateFormat = Intl.DateTimeFormat('pt-BR', {
     year: 'numeric',
@@ -57,7 +57,7 @@ export function CurrentDate() {
     minute: '2-digit',
     second: '2-digit',
     hour12: false
-  }).format(deadLineDate)
+  }).format(deadLineDate.toDate())
 
   
   let now1 = momentTZ().tz("America/Sao_Paulo")
@@ -77,7 +77,7 @@ export function CurrentDate() {
 
       <div className="flex flex-col gap-4 border-blue-800 border-4 p-4">
         <span>Dia Atual:  <span>{currentDate.toUTCString()}</span></span>
-        <span>Dia de fechamento:  <span>{deadLineDate.toUTCString()}</span></span>
+        <span>Dia de fechamento:  <span>{deadLineDate.toDate().toUTCString()}</span></span>
         <span>Dia Atual é maior que dia de fechamento: <span>{String(isGreater)}</span></span>
       </div>
 
