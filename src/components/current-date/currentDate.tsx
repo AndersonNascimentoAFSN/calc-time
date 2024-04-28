@@ -5,9 +5,11 @@ import { formatISO } from 'date-fns';
 import moment from 'moment';
 import momentTZ from 'moment-timezone';
 
-import { toZonedTime } from 'date-fns-tz';
+import { createDateInSaoPaulo } from "@/utils";
 
-export function CurrentDate({ deadLineDate }: { deadLineDate: Date }) {
+export function CurrentDate() {
+  const deadLineDate = createDateInSaoPaulo()
+
   const now = new Date()
 
   const currentDateFormat = Intl.DateTimeFormat('pt-BR', {
@@ -45,12 +47,6 @@ export function CurrentDate({ deadLineDate }: { deadLineDate: Date }) {
 
   const currentDate = new Date()
 
-  const hours = Number(deadlineHour?.split(':')[0])
-  const minutes = Number(deadlineHour?.split(':')[1])
-
-  deadLineDate.setHours(hours)
-  deadLineDate.setMinutes(minutes)
-
   const isGreater = currentDate > deadLineDate
 
   const deadLineDateFormat = Intl.DateTimeFormat('pt-BR', {
@@ -63,8 +59,13 @@ export function CurrentDate({ deadLineDate }: { deadLineDate: Date }) {
     hour12: false
   }).format(deadLineDate)
 
+  
   let now1 = momentTZ().tz("America/Sao_Paulo")
-  let closingDate = momentTZ("2024-04-26T14:00:00").tz("America/Sao_Paulo")
+  let closingDate = momentTZ(deadLineDate).tz("America/Sao_Paulo")
+  // let closingDate = momentTZ("2024-04-26T14:00:00").tz("America/Sao_Paulo")
+
+  console.log('deadLineDate', deadLineDate)
+  console.log('closingDate', closingDate)
 
   return (
     <div className="flex flex-col gap-10">
@@ -83,6 +84,12 @@ export function CurrentDate({ deadLineDate }: { deadLineDate: Date }) {
       <div className="flex flex-col gap-4 border-blue-800 border-4 p-4">
         <span>Dia Atual (Brasília):  <span>{now1.toString()}</span></span>
         <span>Dia de fechamento (Brasília):  <span>{closingDate.toString()}</span></span>
+        <span>Dia Atual é maior que dia de fechamento: <span>{String(now1.isAfter(closingDate))}</span></span>
+      </div>
+
+      <div className="flex flex-col gap-4 border-blue-800 border-4 p-4">
+        <span>Dia Atual (Brasília):  <span>{now1.toString()}</span></span>
+        <span>Dia de fechamento (Brasília):  <span>{deadLineDate.toString()}</span></span>
         <span>Dia Atual é maior que dia de fechamento: <span>{String(now1.isAfter(closingDate))}</span></span>
       </div>
     </div>

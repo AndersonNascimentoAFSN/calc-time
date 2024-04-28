@@ -28,8 +28,9 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import { createDateInSaoPaulo } from '@/utils'
 
-export function Conversor({deadLineDate}:{ deadLineDate: Date}) {
+export function Conversor() {
   const [time, setTime] = useState('00:00')
   const [decimal, setDecimal] = useState(0)
 
@@ -103,7 +104,7 @@ export function Conversor({deadLineDate}:{ deadLineDate: Date}) {
         </TabsContent>
       </Tabs>
 
-      <CurrentDate deadLineDate={deadLineDate}/>
+      <CurrentDate />
     </div>
   )
 }
