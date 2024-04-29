@@ -6,7 +6,7 @@ import moment from 'moment';
 import momentTZ from 'moment-timezone';
 
 const deadlineDay = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY
-const deadlineHour = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_DAY
+const deadlineHour = process.env.NEXT_PUBLIC_MANAGER_APPROVE_REPPROVE_COMPETENCE_DEADLINE_HOUR
 
 import { createDateInSaoPaulo } from "@/utils";
 
@@ -40,7 +40,12 @@ export function CurrentDateNew() {
 
   const timezoneOffsetCurrentDateBrazilian = currentDateBrazilian.utcOffset()
 
-  const brazilianClosingDate = moment.tz("2024-04-26 14:00", "America/Sao_Paulo")
+  const brazilianClosingDate = moment.tz({
+    day: day,
+    hour: hours,
+    minute: minutes,
+  }, "America/Sao_Paulo")
+
   const closeDateUTC = brazilianClosingDate.utc()
 
   return (
