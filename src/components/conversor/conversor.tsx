@@ -1,16 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import dynamic from 'next/dynamic'
 
 import { TimeConverter } from 'andersonnascimentoafsn-utils'
 
 // import { Button } from "@/components/ui/button"
-
-const CurrentDate = dynamic(() => import('../current-date').then(
-  (mod) => mod.CurrentDate),
-  { ssr: false, loading: () => <p>Loading...</p> }
-)
 
 import {
   Card,
@@ -28,12 +22,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { createDateInSaoPaulo } from '@/utils'
-
-const CurrentDateNew = dynamic(() => import('../current-date-new').then(
-  (mod) => mod.CurrentDateNew),
-  { ssr: false, loading: () => <p>Loading...</p> }
-)
 
 export function Conversor() {
   const [time, setTime] = useState('00:00')
@@ -108,8 +96,6 @@ export function Conversor() {
           </Card>
         </TabsContent>
       </Tabs>
-
-      <CurrentDateNew />
     </div>
   )
 }
