@@ -20,6 +20,7 @@ export function usePreSelectedOption({
   dateOfNextCompetence,
 }: UsePreSelectedOptionProps) {
   const [preSelectedOption, setPreSelectedOption] = useState<string>('')
+  const [isPastClosingDay, setIsPastClosingDay] = useState<null | boolean>(null)
 
   useEffect(() => {
     const currentDateLocalUtc = moment().utc()
@@ -50,6 +51,9 @@ export function usePreSelectedOption({
       dateOfNextCompetenceInUTC
     )
 
+    setIsPastClosingDay(isPastClosingDay)
+
+
     const month = currentDateLocalUtc.month()
     const year = currentDateLocalUtc.year()
 
@@ -66,5 +70,6 @@ export function usePreSelectedOption({
 
   return {
     preSelectedOption,
+    isPastClosingDay
   }
 }

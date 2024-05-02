@@ -56,8 +56,8 @@ export function CurrentDateNew() {
     minute: deadlineHourCollaborator?.split(':')[1],
   }, "America/Sao_Paulo").utc().toDate()
 
-  const { preSelectedOption: collaborator } = usePreSelectedOption({ appointmentManagement: false, dateOfNextCompetence: closeDateCollaborator })
-  const { preSelectedOption: manager } = usePreSelectedOption({ appointmentManagement: true, dateOfNextCompetence: closeDateManager })
+  const { preSelectedOption: collaborator, isPastClosingDay: isPastClosingDayCollaborator } = usePreSelectedOption({ appointmentManagement: false, dateOfNextCompetence: closeDateCollaborator })
+  const { preSelectedOption: manager,  isPastClosingDay: isPastClosingDayManager } = usePreSelectedOption({ appointmentManagement: true, dateOfNextCompetence: closeDateManager })
 
   console.log('collaborator', collaborator)
   console.log('manager', manager)
@@ -92,10 +92,10 @@ export function CurrentDateNew() {
       <div className="flex flex-col gap-4 border-blue-800 border-4 p-4">
         <h1 className="text-red-700">Option Select</h1>
         <span>Colaborador: 
-          <span>{collaborator} - {deadlineHourCollaborator}</span>
+          <span>{collaborator} - {deadlineHourCollaborator} - {String(isPastClosingDayCollaborator)}</span>
         </span>
         <span>Gerente: 
-          <span>{manager} - {deadlineHour}</span>
+          <span>{manager} - {deadlineHour} - {String(isPastClosingDayManager)}</span>
         </span>
       </div>
     </div>
