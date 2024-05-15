@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 
-const CurrentDateNew = dynamic(() => import('@/components').then(
+const CurrentDateNew = dynamic(() => import('@/app/[lang]/components').then(
   (mod) => mod.CurrentDateNew),
   { ssr: false, loading: () => <p>Loading...</p> }
 )

@@ -1,0 +1,33 @@
+{
+  "time": {
+    "title": "Conversões",
+    "tab_time_decimal": {
+      "title": "Tempo-Decimal",
+      "content": {
+        "title": "Tempo Decimal",
+        "description": "Converta o tempo em formato de string 00:00 para decimal.",
+        "input": {
+          "label": "Tempo",
+          "placeholder": "Digite o tempo"
+        },
+        "output": {
+          "label": "Valor convertido"
+        }
+      }
+    },
+    "tab_decimal_time": {
+      "title": "Decimal-Tempo",
+      "content": {
+        "title": "Decimal Time",
+        "description": "Converta um decimal para o formato de tempo.",
+        "input": {
+          "label": "Decimal",
+          "placeholder": "Digite o decimal"
+        },
+        "output": {
+          "label": "Valor convertido"
+        }
+      }
+    }
+  }
+}
