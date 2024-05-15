@@ -1,4 +1,4 @@
-import { Todo } from "@/components";
+import { Todo } from "@/app/[lang]/components";
 
 export default function page() {
   return (

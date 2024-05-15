@@ -13,17 +13,18 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/app/[lang]/components/ui/card"
+import { Input } from "@/app/[lang]/components/ui/input"
+import { Label } from "@/app/[lang]/components/ui/label"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/ui/tabs"
+} from "@/app/[lang]/components/ui/tabs"
+import { IDictionary } from '@/dictionaries/type'
 
-export function Conversor() {
+export function Conversor({ dictionary }: { dictionary: IDictionary }) {
   const [time, setTime] = useState('00:00')
   const [decimal, setDecimal] = useState(0)
 
@@ -41,45 +42,45 @@ export function Conversor() {
 
   return (
     <div className="flex min-h-screen flex-col items-center gap-6 p-24">
-      <h1 className="text-5xl font-bold">Conversões</h1>
+      <h1 className="text-5xl font-bold">{dictionary.time.title}</h1>
 
       <Tabs defaultValue="time-decimal" className="w-[400px]">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="time-decimal">Tempo-Decimal</TabsTrigger>
-          <TabsTrigger value="decimal-time">Decimal-Tempo</TabsTrigger>
+          <TabsTrigger value="time-decimal">{dictionary.time.tab_time_decimal.title}</TabsTrigger>
+          <TabsTrigger value="decimal-time">{dictionary.time.tab_decimal_time.title}</TabsTrigger>
         </TabsList>
         <TabsContent value="time-decimal">
           <Card>
             <CardHeader>
-              <CardTitle>Tempo Decimal</CardTitle>
+              <CardTitle>{dictionary.time.tab_time_decimal.content.title}</CardTitle>
               <CardDescription>
-                Converta o tempo em formato de string 00:00 para decimal.
+                {dictionary.time.tab_time_decimal.content.description}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="space-y-1">
-                <Label htmlFor="time">Tempo</Label>
+                <Label htmlFor="time">{dictionary.time.tab_time_decimal.content.input.label}</Label>
                 <Input id="time" defaultValue="00:00" placeholder="00:00" onChange={(e: any) => setTime(e.target.value)} />
               </div>
             </CardContent>
 
             <CardFooter>
               {/* <Button>Converter</Button> */}
-              Valor convertido: {timeDecimal}
+              {dictionary.time.tab_time_decimal.content.output.label}: {timeDecimal}
             </CardFooter>
           </Card>
         </TabsContent>
         <TabsContent value="decimal-time">
           <Card>
             <CardHeader>
-              <CardTitle>Decimal Time</CardTitle>
+              <CardTitle>{dictionary.time.tab_decimal_time.content.title}</CardTitle>
               <CardDescription>
-                Converta um decimal para o formato de tempo.
+                {dictionary.time.tab_decimal_time.content.description}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
               <div className="space-y-1">
-                <Label htmlFor="decimal">Decimal</Label>
+                <Label htmlFor="decimal">{dictionary.time.tab_decimal_time.content.input.label}</Label>
                 <Input id="decimal" type="number" defaultValue={0.000} onChange={(e: any) => setDecimal(Number(e.target.value))} />
               </div>
             </CardContent>
@@ -87,7 +88,7 @@ export function Conversor() {
             <CardFooter>
               <div>
                 <div className="space-y-1">
-                  Valor convertido: {decimalTime}
+                {dictionary.time.tab_decimal_time.content.output.label}: {decimalTime}
                 </div>
 
                 {/* <Button className='mt-2'>Converter</Button> */}
