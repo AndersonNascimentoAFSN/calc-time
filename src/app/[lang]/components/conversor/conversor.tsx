@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { TimeConverter } from 'andersonnascimentoafsn-utils'
+import { TimeConverterProcessorFacade } from '@andersonnascimentoafsn/utils'
 
 // import { Button } from "@/components/ui/button"
 
@@ -28,17 +28,10 @@ export function Conversor({ dictionary }: { dictionary: IDictionary }) {
   const [time, setTime] = useState('00:00')
   const [decimal, setDecimal] = useState(0)
 
-  function convertTimeToDecimal() {
-    if (!TimeConverter.isValidTimeFormat(time)) return
-    return TimeConverter.timeToDecimal(time)
-  }
+  const converterTime =  new TimeConverterProcessorFacade()
 
-  function convertDecimalToTime() {
-    return TimeConverter.decimalToTime(decimal)
-  }
-
-  const timeDecimal = convertTimeToDecimal()
-  const decimalTime = convertDecimalToTime()
+  const timeDecimal = converterTime.fromTimeToDecimal(time)
+  const decimalTime = converterTime.fromDecimalToTime(decimal)
 
   return (
     <div className="flex min-h-screen flex-col items-center gap-6 p-24">
